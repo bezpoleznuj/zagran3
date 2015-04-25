@@ -1,0 +1,27 @@
+﻿{%extends 'main.html'%}
+
+{% load staticfiles %}
+
+{% block article %}
+
+<p><a href="/HU"> Угорщина </a> <a href="/SK"> Словаччина </a> <a href="/"> ALL </a> </p>
+
+<div class="endless_page_template">
+    {% include page_template %}
+</div>
+
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static "js/endless-pagination.js"%}"></script>
+    <script>
+           $.endlessPaginate({
+            onClick: function() {
+                console.log('Label:', $(this).text());
+            }
+        });
+    </script>
+{%endblock%}
+
+{% endblock %}
+

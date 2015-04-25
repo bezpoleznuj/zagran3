@@ -1,0 +1,51 @@
+﻿{%extends 'main.html'%}
+
+{% block article %}
+{% load embed_video_tags %}
+
+<p> <img src="{{ article.article_foto}}"></p>
+{%if article.article_status == True%}
+    <p> Продається {{article.article_price}} $ </p>
+{% else%}
+    <p> Продано </p>
+{%endif%}
+{%if article.article_country == 'HU' %}
+    <p>Угорщина</p>
+{%endif%}
+{%if article.article_country == 'SK' %}
+    <p>Словаччина</p>
+{%endif%}
+<p>{{article.article_address}} </p>
+<table >
+  <tr>
+      <td>Площа</td>
+      <td>Кількість кімнат</td>
+      <td>Кількість поверхів</td>
+      <td>Участок</td>
+      <td>тип стін</td>
+  </tr>
+  <tr>
+      <td>{{ article.article_spase }}</td>
+      <td>{{ article.article_rooms }}</td>
+      <td>{{ article.article_floor }}</td>
+      <td>{{ article.article_area }}</td>
+      <td>{{ article.article_walls }}</td>
+  </tr>
+</table>
+<p> Дата{{ article.article_date }}</p>
+<p> {{ article.article_short_title }} </p>
+<p>Опис Обєкта {{ article.article_text }}</p>
+<hr>
+<p>Фото</p>
+{% for foto in image %}
+    <img src="{{foto.image_foto}}">
+    <p></p>
+{%endfor%}
+<hr>
+<p>Відеоогляд</p>
+{% for video in video %}
+    {% video video.video  %}
+    <p></p>
+{%endfor%}
+
+{% endblock %}
