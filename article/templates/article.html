@@ -2,8 +2,9 @@
 
 {% block article %}
 {% load embed_video_tags %}
+<p> <img src="{{ article.article_foto.url}}"></p>
+<p> <img src="{{ article.article_fotomedium.url}}"></p>
 
-<p> <img src="{{ article.article_foto}}"></p>
 {%if article.article_status == True%}
     <p> Продається {{article.article_price}} $ </p>
 {% else%}
@@ -38,10 +39,25 @@
 <hr>
 <p>Фото</p>
 {% for foto in image %}
-    <img src="{{foto.image_foto}}">
+    <img src="{{foto.image_foto.url}}">
     <p></p>
 {%endfor%}
 <hr>
+
+<p>План Будинку</p>
+{% for foto in planhouse %}
+    <img src="{{foto.planhouse_foto.url}}">
+    <p></p>
+{%endfor%}
+<hr>
+
+<p>План Ділянки</p>
+{% for foto in planarea %}
+    <img src="{{foto.planarea_foto.url}}">
+    <p></p>
+{%endfor%}
+<hr>
+
 <p>Відеоогляд</p>
 {% for video in video %}
     {% video video.video  %}

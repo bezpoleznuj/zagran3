@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'article',
     'embed_video',
     'endless_pagination',
+    'django_cleanup',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,6 +58,7 @@ ROOT_URLCONF = 'zagran.urls'
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
     'django.core.context_processors.request',
 )
 
@@ -116,7 +118,6 @@ STATICFILES_DIRS = (
 """
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files', 'media')
 MEDIA_URL = '/media/'
-
 
 
 
