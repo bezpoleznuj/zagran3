@@ -12,7 +12,6 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('article.urls')),
-
 ]
 urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()

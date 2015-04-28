@@ -1,10 +1,8 @@
 ﻿{%extends 'main.html'%}
-
 {% block article %}
 {% load embed_video_tags %}
 <p> <img src="{{ article.article_foto.url}}"></p>
 <p> <img src="{{ article.article_fotomedium.url}}"></p>
-
 {%if article.article_status == True%}
     <p> Продається {{article.article_price}} $ </p>
 {% else%}

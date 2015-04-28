@@ -1,5 +1,5 @@
 from django.contrib import admin
-from article.models import Article, Image, PlanHouse, PlanArea, Contact, Video
+from article.models import Article, Image, PlanHouse, PlanArea, Video
 from embed_video.admin import AdminVideoMixin
 # Register your models here.
 
@@ -29,6 +29,5 @@ class ArticleAdmin(admin.ModelAdmin):
     ordering = ['-article_status']
     search_fields = ['article_address']
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Contact)
 
 

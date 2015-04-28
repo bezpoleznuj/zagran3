@@ -6,23 +6,20 @@
 <title>Худоміки</title>
 </head>
 <body>
-
- <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css"%}">
-
+<link rel="stylesheet" type="text/css" href="{% static "css/foundation.css"%}">
 <div class="row">
     <a href="/"> <img src="{% static "img/img_1.jpg" %}" width="500px" height="300px"> </a>
-    <p>{{ contacts.contacts_address}}</p>
-    <p>{{ contacts.contacts_phone}}</p>
-    <p>{{ contacts.contacts_email}}</p>
-    <p>{{ contacts.contacts_guarantees}}</p>
+<p>{{config.ADDRESS}}</p>
+<p>{{config.PHONE}}</p>
+<p>{{config.EMAIL}}</p>
+<p>{{config.GUARANTEES}}</p>
+
 </div>
 <hr>
 <div class="row">
     {% block article %}{% endblock %}
 </div>
+
 <p></p>
-
-
-
 </body>
 </html>

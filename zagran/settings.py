@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'embed_video',
     'endless_pagination',
     'django_cleanup',
+    'constance',
+    'constance.backends.database',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +61,9 @@ ROOT_URLCONF = 'zagran.urls'
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
-    'django.core.context_processors.request',
+    'constance.context_processors.config',
+
+
 )
 
 TEMPLATES = [
@@ -73,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -118,6 +123,28 @@ STATICFILES_DIRS = (
 """
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files', 'media')
 MEDIA_URL = '/media/'
+
+
+
+
+
+
+
+CONSTANCE_CONFIG = {
+    'ADDRESS': ('м. Ужгород, пл. Поштова 42', 'м. Ужгород, пл. Поштова 42'),
+    'PHONE': ('0800-800-800', '0800-800-801'),
+    'EMAIL': ('examle@emample.com', 'examle1@emample.com'),
+    'GUARANTEES': ('Гарантируєм', 'Гарантии'),
+}
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+
+
+
+
+
+
+
 
 
 

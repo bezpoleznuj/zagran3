@@ -91,12 +91,3 @@ class Video(models.Model):
         verbose_name_plural = "Видео обзор объекта"
     video_article = models.ForeignKey(Article)
     video = EmbedVideoField()
-
-class Contact(models.Model):
-    class Meta():
-        db_table = "contacts"
-        verbose_name_plural = "Контакты"
-    contacts_address = models.CharField('Адрес', max_length=200)
-    contacts_phone = models.CharField('Телефон', max_length=100)
-    contacts_email = models.CharField('e-mail',max_length=30)
-    contacts_guarantees = models.TextField('Гарантия, Лицензия')
