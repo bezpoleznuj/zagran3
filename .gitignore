@@ -55,8 +55,3 @@ docs/_build/
 
 # PyBuilder
 target/
-
-
-djangoenv
-local_settings.py
-zagran_db.sqlite3

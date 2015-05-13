@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django_cleanup',
     'constance',
     'constance.backends.database',
+    'adminsortable2',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,14 +89,23 @@ WSGI_APPLICATION = 'zagran.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'zagran_db.sqlite3'),
     }
 }
-"""
+
+
+CONSTANCE_CONFIG = {
+    'ADDRESS': ('м. Ужгород, пл. Поштова 42', 'м. Ужгород, пл. Поштова 42'),
+    'PHONE': ('0800-800-800', '0800-800-801'),
+    'EMAIL': ('examle@emample.com', 'examle1@emample.com'),
+    'GUARANTEES': ('Гарантируєм', 'Гарантии'),
+}
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -130,29 +140,9 @@ MEDIA_URL = '/media/'
 
 
 
-CONSTANCE_CONFIG = {
-    'ADDRESS': ('м. Ужгород, пл. Поштова 42', 'м. Ужгород, пл. Поштова 42'),
-    'PHONE': ('0800-800-800', '0800-800-801'),
-    'EMAIL': ('examle@emample.com', 'examle1@emample.com'),
-    'GUARANTEES': ('Гарантируєм', 'Гарантии'),
-}
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-import dj_database_url
-DATABASES = {'default': dj_database_url.config()}
+#import dj_database_url
+#DATABASES = {'default': dj_database_url.config()}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -172,9 +162,3 @@ STATICFILES_DIRS = (
 )
 
 DEBUG = True
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-

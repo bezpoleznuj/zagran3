@@ -13,8 +13,9 @@ def resaize(filename,size=(1024, 768)):
 class Article(models.Model):
     class Meta():
         db_table = "article"
-        ordering = ["article_date"]
+        ordering = ["article_order"]
         verbose_name_plural = "Объявления"
+    article_order = models.PositiveIntegerField(default=0, blank=False, null=False)
     article_country = models.CharField('Страна',max_length=2, choices=(('HU', 'Венгрия'),('SK','Словакия')))
     article_address = models.CharField('Адрес расположения',max_length=150,default='-')
     article_short_title = models.TextField('Краткое описание объекта',max_length=300,default='-')
