@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 from embed_video.fields import EmbedVideoField
-
+from shutil import copyfile
+import os
 # Create your models here.
 
 def resaize(filename,size=(1024, 768)):
@@ -32,29 +33,22 @@ class Article(models.Model):
     article_fotosmall = models.ImageField(default='')
     article_fotomedium = models.ImageField(default='')
     def save(self):
+        fileName, fileExtension = os.path.splitext(self.article_foto.name)
+        self.article_fotosmall =  fileName+'_s'+fileExtension
+        self.article_fotomedium =  fileName+'_m'+fileExtension
         super(Article, self).save()
-        filename = settings.MEDIA_ROOT+self.article_foto.name
+        filename = os.path.join(settings.MEDIA_ROOT, self.article_foto.name)
         resaize(filename,(1024,768))
 
-        f = open(filename,'rb')
-        sname = filename[:-4]+'_s'+filename[-4:]
-        fcopy = open(sname, 'wb')
-        fcopy.write(f.read())
-        f.close()
-        fcopy.close()
-        resaize(fcopy.name,(160,106))
+        fileName, fileExtension = os.path.splitext(filename)
+        sname = fileName+'_s'+fileExtension
+        mname = fileName+'_m'+fileExtension
 
-        f = open(filename,'rb')
-        sname = filename[:-4]+'_m'+filename[-4:]
-        fcopy = open(sname, 'wb')
-        fcopy.write(f.read())
-        f.close()
-        fcopy.close()
-        resaize(fcopy.name,(314,209))
+        copyfile(filename, sname)
+        resaize(sname,(160,106))
 
-        self.article_fotosmall = self.article_foto.name[:-4]+'_s'+self.article_foto.name[-4:]
-        self.article_fotomedium = self.article_foto.name[:-4]+'_m'+self.article_foto.name[-4:]
-        super(Article, self).save()
+        copyfile(filename,mname)
+        resaize(mname,(314,209))
 
 class Image(models.Model):
     class Meta():
