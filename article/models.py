@@ -56,9 +56,9 @@ class Image(models.Model):
         verbose_name_plural = "фотография объекта"
     image_article = models.ForeignKey(Article)
     image_foto = models.ImageField('Додаткове фото обєкту',default='')
-    def save(self, size=(1024, 768)):
+    def save(self):
         super(Image, self).save()
-        resaize(settings.MEDIA_ROOT+self.image_foto.name)
+        resaize(os.path.join(settings.MEDIA_ROOT, self.image_foto.name),(1024,768))
 
 class PlanHouse(models.Model):
     class Meta():
@@ -66,9 +66,9 @@ class PlanHouse(models.Model):
         verbose_name_plural = "Схема дома"
     planhouse_article = models.ForeignKey(Article)
     planhouse_foto = models.ImageField('План-Схема дома',default='')
-    def save(self, size=(1024, 768)):
+    def save(self):
         super(PlanHouse, self).save()
-        resaize(settings.MEDIA_ROOT+self.planhouse_foto.name)
+        resaize(os.path.join(settings.MEDIA_ROOT, self.planhouse_foto.name),(1024,768))
 
 class PlanArea(models.Model):
     class Meta():
@@ -76,9 +76,9 @@ class PlanArea(models.Model):
         verbose_name_plural = "Схема участка"
     planarea_article = models.ForeignKey(Article)
     planarea_foto = models.ImageField('Схема участка',default='')
-    def save(self, size=(1024, 768)):
+    def save(self):
         super(PlanArea, self).save()
-        resaize(settings.MEDIA_ROOT+self.planarea_foto.name)
+        resaize(os.path.join(settings.MEDIA_ROOT, self.planarea_foto.name),(1024,768))
 
 class Video(models.Model):
     class Meta():
