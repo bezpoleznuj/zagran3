@@ -53,9 +53,9 @@ class Article(models.Model):
 class Image(models.Model):
     class Meta():
         db_table = "Image"
-        verbose_name_plural = "фотография объекта"
+        verbose_name_plural = "Фотография объекта"
     image_article = models.ForeignKey(Article)
-    image_foto = models.ImageField('Додаткове фото обєкту',default='')
+    image_foto = models.ImageField('Дополнительное фото объекта',default='')
     def save(self):
         super(Image, self).save()
         resaize(os.path.join(settings.MEDIA_ROOT, self.image_foto.name),(1024,768))

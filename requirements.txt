@@ -1,13 +1,13 @@
-dj-database-url==0.3.0
+#dj-database-url==0.3.0
 dj-static==0.0.6
 Django==1.8
 gunicorn==19.3.0
 Pillow==2.8.1
 static3==0.5.1
-psycopg2==2.5.1
+#psycopg2==2.5.1
 django-embed-video==0.11
 django-endless-pagination==2.0
 django-constance==1.0.1
 django-admin-sortable2
 django-cleanup
-pillow
+django-picklefield
