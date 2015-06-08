@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from embed_video.fields import EmbedVideoField
 from shutil import copyfile
+from datetime import datetime
 import os
 # Create your models here.
 
@@ -20,15 +21,19 @@ class Article(models.Model):
     article_country = models.CharField('Страна',max_length=2, choices=(('HU', 'Венгрия'),('SK','Словакия')))
     article_address = models.CharField('Адрес расположения',max_length=150,default='-')
     article_short_title = models.TextField('Краткое описание объекта',max_length=300,default='-')
-    article_text = models.TextField('Полное описание объекта',default='Опис відсутній')
-    article_date = models.DateTimeField('Дата Создания')
+    article_text = models.TextField('Полное описание объекта',default='-')
+
+    article_outbuildings = models.TextField('Дополнительные постройки и другие штуки на участке', default='-')
+    article_service = models.TextField('Стоимость коммунальных услуг и их перечень', default='-')
+    article_fence = models.BooleanField('Огражденный Участок или нет',choices=((True, 'Да'),(False,'Нет')),default=True)
+    article_date = models.DateTimeField('Дата Создания',default=datetime.now, blank=True )
     article_status = models.BooleanField('Статус объекта',default=True)
     article_price = models.CharField('Цена',max_length=10,default=0)
     article_spase = models.IntegerField('Площадь',default=0)
     article_rooms = models.IntegerField('Количество комнат',default=0)
     article_floor = models.IntegerField('Количество этажей',default=0)
     article_area = models.CharField('Наличие придомовой территории',max_length=50,default='-')
-    article_walls = models.CharField('Стены',max_length=50,default='Цегла')
+    article_walls = models.CharField('Стены',max_length=50,default='Кирпич')
     article_foto = models.ImageField('Фотография объекта', default='')
     article_fotosmall = models.ImageField(default='')
     article_fotomedium = models.ImageField(default='')

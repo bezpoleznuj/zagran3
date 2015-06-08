@@ -21,7 +21,9 @@ class PlanAreaInLine(admin.StackedInline):
     extra = 1
 
 class ArticleAdmin(SortableAdminMixin, admin.ModelAdmin):
-    fieldsets = (('Адрес', {'fields': ('article_country', 'article_address')}),(None, {'fields': ('article_short_title','article_text','article_date','article_status','article_price','article_spase','article_rooms','article_floor','article_area','article_walls','article_foto')}),)
+    fieldsets = (('Адрес', {'fields': ('article_country', 'article_address')}),
+                 (None, {'fields': ('article_short_title','article_text','article_outbuildings','article_service','article_fence',
+                        'article_status','article_price','article_spase','article_rooms','article_floor','article_area','article_walls','article_foto')}),)
     #fields = ('article_short_title','article_text','article_date','article_status','article_price','article_spase','article_rooms','article_floor','article_area','article_walls','article_foto')
     list_display = ['article_country','article_address','article_date', 'article_status']
     list_display_links = ('article_country','article_address', 'article_date','article_status')
@@ -29,6 +31,7 @@ class ArticleAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_filter = ['article_date','article_status']
     ordering = ['article_order']
     search_fields = ['article_address']
+
 admin.site.register(Article, ArticleAdmin)
 
 

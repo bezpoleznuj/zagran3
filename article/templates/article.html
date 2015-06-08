@@ -1,6 +1,9 @@
 ﻿{%extends 'main.html'%}
 {% block article %}
 {% load embed_video_tags %}
+
+
+
 <p> <img src="{{ article.article_foto.url}}"></p>
 <p> <img src="{{ article.article_fotomedium.url}}"></p>
 {%if article.article_status == True%}
@@ -22,6 +25,7 @@
       <td>Кількість поверхів</td>
       <td>Участок</td>
       <td>тип стін</td>
+      <td>Огражденный Участок или нет</td>
   </tr>
   <tr>
       <td>{{ article.article_spase }}</td>
@@ -29,11 +33,19 @@
       <td>{{ article.article_floor }}</td>
       <td>{{ article.article_area }}</td>
       <td>{{ article.article_walls }}</td>
+      <td>{%if article.article_fence == True%}
+    <p> Огражденный </p>
+{% else%}
+    <p> Неогражденный </p>
+{%endif%}
+      </td>
   </tr>
 </table>
 <p> Дата{{ article.article_date }}</p>
 <p> {{ article.article_short_title }} </p>
 <p>Опис Обєкта {{ article.article_text }}</p>
+<p>Дополнительные постройки и другие штуки на участке {{ article.article_outbuildings }}</p>
+<p>Стоимость коммунальных услуг и их перечень: {{ article.article_service }}</p>
 <hr>
 <p>Фото</p>
 {% for foto in image %}

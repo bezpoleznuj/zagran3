@@ -26,6 +26,6 @@ def article(request, article_id):
                                                'image': Image.objects.filter(image_article_id = article_id),
                                                'video':Video.objects.filter(video_article_id = article_id),
                                                'planarea':PlanArea.objects.filter( planarea_article_id = article_id),
-                                               'planhouse':PlanHouse.objects.filter( planhouse_article_id = article_id)
-
+                                               'planhouse':PlanHouse.objects.filter( planhouse_article_id = article_id),
+                                                'config': config
                                                 })
