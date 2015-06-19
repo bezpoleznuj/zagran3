@@ -1,22 +1,30 @@
 {% load endless %}
 {% paginate objects %}
 {% for object in objects %}
-    {%if object.article_country == 'HU'%}
-        <p> Угорщина </p>
-    {%endif%}
-    {%if object.article_country == 'SK'%}
-        <p> Словаччина </p>
-    {%endif%}
-    <p>{{object.article_address}}</p>
-    <a href="/articles/get/{{object.id}}"> <img src="{{ object.article_fotosmall.url}}"> </a>
-    <p></p>
-    {%if object.article_status == True%}
-        <p> Продається {{object.article_price}} </p>
-    {% else%}
-        <p> Продано </p>
-    {%endif%}
+	<div class="main_list-items-item {%if object.article_status == False%}item-sold{%endif%}">
 
-    <hr>
+		<a class="main_list-items-item-image" href="/articles/get/{{object.id}}" style="background-image:url({{object.article_fotomedium.url}});"></a>
+
+		<div class="main_list-items-item-content">
+			<a class="main_list-items-item-header" href="/articles/get/{{object.id}}"></a>
+
+			<div class="main_list-items-item-place">
+				<div class="flag
+				{%if object.article_country == 'HU'%} flag-hu"></div>Угорщина{%else%} flag-sk"></div>Словаччина{%endif%},
+				{{object.article_address}}
+			</div>
+
+			<div class="main_list-items-item-desc">
+				{{object.article_short_title}}
+			</div>
+
+			<div class="main_list-items-item-footer">
+				<div class="main_list-items-item-price">
+					<a href="/articles/get/{{object.id}}">{{object.article_price}}</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endfor%}
 
 {% show_more%}

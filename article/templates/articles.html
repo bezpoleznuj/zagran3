@@ -3,27 +3,21 @@
 {% load staticfiles %}
 
 {% block article %}
+<div class="main_list">
+    <div class="main_list-filter">
+        <a href="/HU">Угорщина</a> <a href="/SK">Словаччина</a> <a href="/">ALL</a>
+    </div>
 
-        
+    <div class="main_list-items">
+        {% include page_template %}
+    </div>
 
-<p><a href="/HU"> Угорщина </a> <a href="/SK"> Словаччина </a> <a href="/"> ALL </a> </p>
+    {% block js %}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="{% static "js/endless-pagination.js"%}"></script>
+        {{ block.super }}
+    {%endblock%}
 
-<div class="endless_page_template">
-    {% include page_template %}
 </div>
-
-{% block js %}
-    {{ block.super }}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="{% static "js/endless-pagination.js"%}"></script>
-    <script>
-           $.endlessPaginate({
-            onClick: function() {
-                console.log('Label:', $(this).text());
-            }
-        });
-    </script>
-{%endblock%}
-
 {% endblock %}
 

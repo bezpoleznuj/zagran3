@@ -5,41 +5,40 @@
 
 
 <p> <img src="{{ article.article_foto.url}}"></p>
-<p> <img src="{{ article.article_fotomedium.url}}"></p>
 {%if article.article_status == True%}
-    <p> Продається {{article.article_price}} $ </p>
+	<p> Продається {{article.article_price}} $ </p>
 {% else%}
-    <p> Продано </p>
+	<p> Продано </p>
 {%endif%}
 {%if article.article_country == 'HU' %}
-    <p>Угорщина</p>
+	<p>Угорщина</p>
 {%endif%}
 {%if article.article_country == 'SK' %}
-    <p>Словаччина</p>
+	<p>Словаччина</p>
 {%endif%}
 <p>{{article.article_address}} </p>
 <table >
-  <tr>
-      <td>Площа</td>
-      <td>Кількість кімнат</td>
-      <td>Кількість поверхів</td>
-      <td>Участок</td>
-      <td>тип стін</td>
-      <td>Огражденный Участок или нет</td>
-  </tr>
-  <tr>
-      <td>{{ article.article_spase }}</td>
-      <td>{{ article.article_rooms }}</td>
-      <td>{{ article.article_floor }}</td>
-      <td>{{ article.article_area }}</td>
-      <td>{{ article.article_walls }}</td>
-      <td>{%if article.article_fence == True%}
-    <p> Огражденный </p>
+	<tr>
+		<td>Площа</td>
+		<td>Кількість кімнат</td>
+		<td>Кількість поверхів</td>
+		<td>Участок</td>
+		<td>тип стін</td>
+		<td>Огражденный Участок или нет</td>
+	</tr>
+	<tr>
+		<td>{{ article.article_spase }}</td>
+		<td>{{ article.article_rooms }}</td>
+		<td>{{ article.article_floor }}</td>
+		<td>{{ article.article_area }}</td>
+		<td>{{ article.article_walls }}</td>
+		<td>{%if article.article_fence == True%}
+		<p> Огражденный </p>
 {% else%}
-    <p> Неогражденный </p>
+		<p> Неогражденный </p>
 {%endif%}
-      </td>
-  </tr>
+		</td>
+	</tr>
 </table>
 <p> Дата{{ article.article_date }}</p>
 <p> {{ article.article_short_title }} </p>
@@ -48,30 +47,31 @@
 <p>Стоимость коммунальных услуг и их перечень: {{ article.article_service }}</p>
 <hr>
 <p>Фото</p>
-{% for foto in image %}
-    <img src="{{foto.image_foto.url}}">
-    <p></p>
-{%endfor%}
+	<div class="fotorama">
+		{% for foto in image %}
+			<img src="{{foto.image_foto.url}}">
+		{%endfor%}
+	</div>
 <hr>
 
 <p>План Будинку</p>
 {% for foto in planhouse %}
-    <img src="{{foto.planhouse_foto.url}}">
-    <p></p>
+	<img src="{{foto.planhouse_foto.url}}">
+	<p></p>
 {%endfor%}
 <hr>
 
 <p>План Ділянки</p>
 {% for foto in planarea %}
-    <img src="{{foto.planarea_foto.url}}">
-    <p></p>
+	<img src="{{foto.planarea_foto.url}}">
+	<p></p>
 {%endfor%}
 <hr>
 
 <p>Відеоогляд</p>
 {% for video in video %}
-    {% video video.video  %}
-    <p></p>
+	{% video video.video  %}
+	<p></p>
 {%endfor%}
 
 {% endblock %}
