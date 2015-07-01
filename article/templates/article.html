@@ -3,75 +3,89 @@
 {% load embed_video_tags %}
 
 
-
-<p> <img src="{{ article.article_foto.url}}"></p>
-{%if article.article_status == True%}
-	<p> Продається {{article.article_price}} $ </p>
-{% else%}
-	<p> Продано </p>
-{%endif%}
-{%if article.article_country == 'HU' %}
-	<p>Угорщина</p>
-{%endif%}
-{%if article.article_country == 'SK' %}
-	<p>Словаччина</p>
-{%endif%}
-<p>{{article.article_address}} </p>
-<table >
-	<tr>
-		<td>Площа</td>
-		<td>Кількість кімнат</td>
-		<td>Кількість поверхів</td>
-		<td>Участок</td>
-		<td>тип стін</td>
-		<td>Огражденный Участок или нет</td>
-	</tr>
-	<tr>
-		<td>{{ article.article_spase }}</td>
-		<td>{{ article.article_rooms }}</td>
-		<td>{{ article.article_floor }}</td>
-		<td>{{ article.article_area }}</td>
-		<td>{{ article.article_walls }}</td>
-		<td>{%if article.article_fence == True%}
-		<p> Огражденный </p>
-{% else%}
-		<p> Неогражденный </p>
-{%endif%}
-		</td>
-	</tr>
-</table>
-<p> Дата{{ article.article_date }}</p>
-<p> {{ article.article_short_title }} </p>
-<p>Опис Обєкта {{ article.article_text }}</p>
-<p>Дополнительные постройки и другие штуки на участке {{ article.article_outbuildings }}</p>
-<p>Стоимость коммунальных услуг и их перечень: {{ article.article_service }}</p>
-<hr>
-<p>Фото</p>
+<div class="s_item-fotorama">
 	<div class="fotorama">
+		<img src="{{ article.article_foto.url}}">
 		{% for foto in image %}
 			<img src="{{foto.image_foto.url}}">
 		{%endfor%}
 	</div>
-<hr>
+</div>
 
-<p>План Будинку</p>
-{% for foto in planhouse %}
-	<img src="{{foto.planhouse_foto.url}}">
-	<p></p>
-{%endfor%}
-<hr>
+<div class="s_item-description">
+	<h3>О доме</h3>
+	<p>{{ article.article_text }}</p>
 
-<p>План Ділянки</p>
-{% for foto in planarea %}
-	<img src="{{foto.planarea_foto.url}}">
-	<p></p>
-{%endfor%}
-<hr>
+	<h4>Дополнительные постройки и другие штуки на участке</h4>
+	<p>{{ article.article_outbuildings }}</p>
 
-<p>Відеоогляд</p>
-{% for video in video %}
-	{% video video.video  %}
-	<p></p>
-{%endfor%}
+	<h4>Стоимость коммунальных услуг и их перечень:</h4>
+	<p>{{ article.article_service }}</p>
+
+	<h4>Видеообзор</h4>
+	{% for video in video %}
+		{% video video.video  %}
+	{%endfor%}
+</div>
+
+
+<div class="s_item-info s_item-card">
+	<p class="s_item-card-title">
+		{%if article.article_country == 'HU' %}Венгрия{%else%}Словакия{%endif%}, {{article.article_address}}
+		<br>
+		{%if article.article_status == True%}
+			Продаётся за {{article.article_price}}
+		{% else%}
+			Дом продан
+		{%endif%}
+	</p>
+
+	<table class="s_item-table">
+		<tr>
+			<td>Площа</td>
+			<td>{{ article.article_spase }}</td>
+		</tr>
+		<tr>
+			<td>Кількість кімнат</td>
+			<td>{{ article.article_rooms }}</td>
+		</tr>
+		<tr>
+			<td>Кількість поверхів</td>
+			<td>{{ article.article_floor }}</td>
+		</tr>
+		<tr>
+			<td>Участок</td>
+			<td>{{ article.article_area }}</td>
+		</tr>
+		<tr>
+			<td>тип стін</td>
+			<td>{{ article.article_walls }}</td>
+		</tr>
+		<tr>
+			<td>Огражденный участок или нет</td>
+			<td>
+				{%if article.article_fence == True%}
+					Огражденный
+				{% else%}
+					Неогражденный
+				{%endif%}
+			</td>
+		</tr>
+	</table>
+
+	<div style="display: inline-block; margin-right: 20px;">
+		<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}" class="s_item-thumb" style="background-image:url({% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%});"></a>
+		<br>
+		<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}">План дома</a>
+	</div>
+
+	<div style="display: inline-block;">
+		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}" class="s_item-thumb" style="background-image:url({% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%});"></a>
+		<br>
+		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}">План участка</a>
+	</div>
+
+</div>
+
 
 {% endblock %}

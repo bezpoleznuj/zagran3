@@ -8,6 +8,9 @@ $(document).ready(function() {
     nav: 'thumbs',
     allowfullscreen: 'true'
   });
+
+
+  $('.main_list-btn_more').click()
 });
 
 

@@ -19,6 +19,9 @@
 			</div>
 
 			<div class="main_list-items-item-footer">
+				{%if object.article_status == False%}
+					<div class="main_list-items-item-sold_badge">Продано</div>
+				{%endif%}
 				<div class="main_list-items-item-price">
 					<a href="/articles/get/{{object.id}}">{{object.article_price}}</a>
 				</div>
@@ -27,4 +30,9 @@
 	</div>
 {% endfor%}
 
-{% show_more%}
+
+<div class="radioform main_list-btn_more">
+    <div class="radioform-button" id="autorepost-button"><span>Показать следующие 4 дома</span></div>
+</div>
+
+<!-- {% show_more%} -->

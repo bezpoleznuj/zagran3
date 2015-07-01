@@ -8,6 +8,7 @@
 	<title>«Загран-Дом», продажа домов и участков в километре за границей Украины</title>
 	<link rel="stylesheet" href="{% static "css/foundation.css"%}">
 	<link rel="stylesheet" href="{% static "css/base.css"%}">
+	<link rel="stylesheet" href="{% static "css/old-radioforms.css"%}">
 	<link rel="stylesheet" href="{% static "css/main.css"%}">
 
 	<script src="{% static 'js/jquery-1.11.3.min.js'%}"></script>
@@ -27,9 +28,10 @@
 		</div>
 
 		<div class="header-contacts">
-			<p>{{config.ADDRESS}}</p>
-			<p>{{config.PHONE}}</p>
-			<p><a href="mailto://{{config.EMAIL}}">{{config.EMAIL}}</a></p>
+			<!-- {{config.ADDRESS}} -->
+			{{config.PHONE}}
+			<br>
+			<a href="mailto://{{config.EMAIL}}">{{config.EMAIL}}</a>
 		</div>
 	</div>
 
@@ -37,5 +39,7 @@
 		{% block article %}{% endblock %}
 	</div>
 
+
+	<div class="footer-line"></div>
 </body>
 </html>
