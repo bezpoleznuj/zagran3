@@ -28,7 +28,8 @@ class Article(models.Model):
     article_service = models.TextField('Стоимость коммунальных услуг и их перечень', blank=True)
     article_fence = models.BooleanField('Огражденный Участок или нет',choices=((True, 'Да'),(False,'Нет')),default=True)
     article_date = models.DateTimeField('Дата Создания',default=datetime.now, blank=True )
-    article_status = models.BooleanField('Статус объекта',default=True,blank=True)
+    article_status = models.BooleanField('Статус объекта',default=True,blank=True, choices=(('True', "Продается"),('False',"Продано")))
+
     article_price = models.CharField('Цена',max_length=15,default=0,blank=True)
     article_spase = models.IntegerField('Площадь',default=0,blank=True)
     article_rooms = models.IntegerField('Количество комнат',default=0,blank=True)

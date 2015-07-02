@@ -12,11 +12,19 @@
         {% include page_template %}
     </div>
 
+
     {% block js %}
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="{% static "js/endless-pagination.js"%}"></script>
-        {{ block.super }}
-    {%endblock%}
+    {{ block.super }}
+    <script src="{% static "js/jquery-1.11.3.min.js"%}"></script>
+    <script src="{% static "js/endless-pagination.js"%}"></script>
+    <script>
+           $.endlessPaginate({
+            onClick: function() {
+                console.log('Label:', $(this).text());
+            }
+        });
+    </script>
+{%endblock%}
 
 </div>
 {% endblock %}

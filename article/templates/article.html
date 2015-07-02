@@ -25,6 +25,7 @@
 	<h4>Видеообзор</h4>
 	{% for video in video %}
 		{% video video.video  %}
+        <p> <a href = {{video.video}}>Просмотреть на Youtube </a> </p>
 	{%endfor%}
 </div>
 
@@ -78,13 +79,13 @@
 		<br>
 		<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}">План дома</a>
 	</div>
-
+    {% if planarea%}
 	<div style="display: inline-block;">
 		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}" class="s_item-thumb" style="background-image:url({% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%});"></a>
 		<br>
 		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}">План участка</a>
 	</div>
-
+    {%endif%}
 </div>
 
 

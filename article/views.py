@@ -15,7 +15,10 @@ def articles(request,country = '',template="articles.html", extra_context=None):
     context = {
         'objects': all_articles,
         'config': config,
+        'number_articles': len(Article.objects.all()),
+        'number_false_articles': len(Article.objects.filter(article_status = False))
     }
+
     if extra_context is not None:
         context.update(extra_context)
     return render_to_response(template, context,
@@ -27,5 +30,7 @@ def article(request, article_id):
                                                'video':Video.objects.filter(video_article_id = article_id),
                                                'planarea':PlanArea.objects.filter( planarea_article_id = article_id),
                                                'planhouse':PlanHouse.objects.filter( planhouse_article_id = article_id),
-                                                'config': config
+                                                'config': config,
+                                                'number_articles': len(Article.objects.all()),
+                                                'number_false_articles': len(Article.objects.filter(article_status = False))
                                                 })
