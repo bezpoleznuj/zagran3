@@ -28,8 +28,7 @@ class Article(models.Model):
     article_service = models.TextField('Стоимость коммунальных услуг и их перечень', blank=True)
     article_fence = models.BooleanField('Огражденный Участок или нет',choices=((True, 'Да'),(False,'Нет')),default=True)
     article_date = models.DateTimeField('Дата Создания',default=datetime.now, blank=True )
-    article_status = models.BooleanField('Статус объекта',default=True,blank=True, choices=(('True', "Продается"),('False',"Продано")))
-
+    article_status = models.BooleanField('Статус объекта',default=True,blank=True, choices=((True, "Продается"),(False,"Продано")))
     article_price = models.CharField('Цена',max_length=15,default=0,blank=True)
     article_spase = models.IntegerField('Площадь',default=0,blank=True)
     article_rooms = models.IntegerField('Количество комнат',default=0,blank=True)
@@ -101,10 +100,22 @@ class PlanHouse(models.Model):
         verbose_name_plural = "Схема дома"
     planhouse_article = models.ForeignKey(Article)
     planhouse_foto = models.ImageField('План-Схема дома',default='')
+    """planhouse_foto_s = models.ImageField(default='',blank=True)"""
     def save(self):
         super(PlanHouse, self).save()
         resaize(os.path.join(settings.MEDIA_ROOT, self.planhouse_foto.name),(1024,768))
+        """fileName, fileExtension = os.path.splitext(self.planhouse_foto.name)
+        self.planhouse_fotosmall =  fileName+'_s'+fileExtension
 
+        filename = os.path.join(settings.MEDIA_ROOT, self.planhouse_foto.name)
+
+        fileName, fileExtension = os.path.splitext(filename)
+        sname = fileName+'_s'+fileExtension
+
+        copyfile(filename, sname)
+        resaize(sname,(160,106))
+        super(PlanHouse, self).save()
+"""
 class PlanArea(models.Model):
     class Meta():
         db_table = 'planarea'

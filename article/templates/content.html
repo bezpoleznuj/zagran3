@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="main_list-items-item-desc">
-				{{object.article_short_title}}
+				{{object.article_short_title|linebreaksbr}}
 			</div>
 
 			<div class="main_list-items-item-footer">
@@ -30,7 +30,7 @@
 	</div>
 {% endfor%}
 
-{% show_more %}
+{% show_more "Показать следующие 4 дома" %}
 
 
 <!--
