@@ -21,8 +21,11 @@
 
 <body>
 	<div class="header">
+        {% if request.get_full_path = "/" %}
+       <h1>Загран-дом</h1>
+        {%else%}
 		<a class="header-logo" href="/"><h1>Загран-дом</h1></a>
-
+        {%endif%}
 		<div class="header-description">
 			<p>{{config.GUARANTEES}}</p>
 		</div>
@@ -33,10 +36,7 @@
 			<br>
 			<a href="mailto://{{config.EMAIL}}">{{config.EMAIL}}</a>
 		</div>
-        <div>
-            <p>В базі {{number_articles}} записів</p>
-            <p>З них {{number_false_articles}} Зі статусом продано</p>
-        </div>
+
 	</div>
 
 	<div class="content">

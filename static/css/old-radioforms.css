@@ -15,7 +15,7 @@
     _height: 5px;
     white-space: nowrap;
 }
- .endless_more {
+ .radioform-button {
     font-size: 1em;
     min-height: 5px;
     display: -moz-inline-stack;

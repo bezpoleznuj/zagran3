@@ -1,7 +1,7 @@
 {% load endless %}
 {% paginate 4 objects %}
 {% for object in objects %}
-	<div class="main_list-items-item {%if object.article_status == False%}item-sold{%endif%}">
+	<div class="main_list-items-item {%if object.article_status == False%}item-sold{%endif%}"id="entries">
 
 		<a class="main_list-items-item-image" href="/articles/get/{{object.id}}" style="background-image:url({{object.article_fotomedium.url}});"></a>
 
@@ -30,12 +30,17 @@
 	</div>
 {% endfor%}
 
-{% show_more "Показать следующие 4 дома" %}
+{% get_pages %}
 
 
-<!--
 <div class="radioform main_list-btn_more">
-    <div class="radioform-button" id="autorepost-button"><span>Показать следующие 4 дома</span></div>
+    <div class="radioform-button" id="autorepost-button">
+        {%if pages.next %}
+        <span> {{ pages.next}}</span>
+    {%else%}
+        <span>{{pages.first_as_arrow}}</span>
+    {%endif%}
+    </div>
 </div>
--->
+
 <!-- {% show_more%} -->

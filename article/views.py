@@ -5,8 +5,9 @@ from django.template import RequestContext
 from constance import config
 # Create your views here.
 
-@page_template("content.html")
 
+"""@page_template('myapp/entry_index_page.html')  # just add this decorator"""
+@page_template("content.html")
 def articles(request,country = '',template="articles.html", extra_context=None):
     if country != '':
         all_articles = Article.objects.filter(article_country = country)

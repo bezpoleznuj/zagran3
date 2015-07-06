@@ -8,24 +8,17 @@
         <a href="/">Показать все дома</a><a href="/HU">Венгрия</a> <a href="/SK">Словакия</a>
     </div> -->
 
-    <div class="main_list-items">
-        {% include page_template %}
+    <div id="entries" class="endless_page_template">
+         {% include "content.html" %}
     </div>
 
 
     {% block js %}
     {{ block.super }}
-    <script src="{% static "js/jquery-1.11.3.min.js"%}"></script>
-    <script src="{% static "js/endless-pagination.js"%}"></script>
-    <script>
-           $.endlessPaginate({
-            onClick: function() {
-                console.log('Label:', $(this).text());
-            }
-        });
-    </script>
-{%endblock%}
+     <script src="http://code.jquery.com/jquery-latest.js"></script>
+     <script src="{% static "js/endless-pagination.js"%}"></script>
+     <script>$.endlessPaginate();</script>
+    {%endblock%}
 
 </div>
 {% endblock %}
-
