@@ -1,45 +1,53 @@
 {% load endless %}
 {% paginate 4 objects %}
+
+<div class="main_list-items-dblbl">
 {% for object in objects %}
-	<div class="main_list-items-item {%if object.article_status == False%}item-sold{%endif%}"id="entries">
+    <div class="main_list-items-item {%if object.article_status == False%}item-sold{%endif%}"id="entries">
 
-		<a class="main_list-items-item-image" href="/articles/get/{{object.id}}" style="background-image:url({{object.article_fotomedium.url}});"></a>
+        <a class="main_list-items-item-image" href="/articles/get/{{object.id}}" style="background-image:url({{object.article_fotomedium.url}});"></a>
 
-		<div class="main_list-items-item-content">
-			<a class="main_list-items-item-header" href="/articles/get/{{object.id}}"></a>
+        <div class="main_list-items-item-content">
+            <a class="main_list-items-item-header" href="/articles/get/{{object.id}}"></a>
 
-			<div class="main_list-items-item-place">
-				<div class="flag
-				{%if object.article_country == 'HU'%} flag-hu"></div>Угорщина{%else%} flag-sk"></div>Словаччина{%endif%},
-				{{object.article_address}}
-			</div>
+            <div class="main_list-items-item-place">
+                <div class="flag
+                {%if object.article_country == 'HU'%} flag-hu"></div>Венгрия{%else%} flag-sk"></div>Словакия{%endif%},
+                {{object.article_address}}
+            </div>
 
-			<div class="main_list-items-item-desc">
-				{{object.article_short_title|linebreaksbr}}
-			</div>
+            <div class="main_list-items-item-desc">
+                {{object.article_short_title|linebreaksbr}}
+            </div>
 
-			<div class="main_list-items-item-footer">
-				{%if object.article_status == False%}
-					<div class="main_list-items-item-sold_badge">Продано</div>
-				{%endif%}
-				<div class="main_list-items-item-price">
-					<a href="/articles/get/{{object.id}}">{{object.article_price}}</a>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="main_list-items-item-footer">
+                {%if object.article_status == False%}
+                    <div class="main_list-items-item-sold_badge">Продан</div>
+                {%endif%}
+                <div class="main_list-items-item-price">
+                    <a href="/articles/get/{{object.id}}">{{object.article_price}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% ifequal forloop.counter 2 %}
+        </div>
+        <div class="main_list-items-dblbl">
+    {% endifequal %}
+
 {% endfor%}
+</div>
 
 {% get_pages %}
 
 
-<div class="radioform main_list-btn_more">
-    <div class="radioform-button" id="autorepost-button">
+<div class="main_list-btn_more">
+    <div id="autorepost-button">
         {%if pages.next %}
-        <span> {{ pages.next}}</span>
-    {%else%}
-        <span>{{pages.first_as_arrow}}</span>
-    {%endif%}
+            <h4 class="arrow-right">{{pages.next}}<div class="btn-clip btn-clip1"></div><div class="btn-clip btn-clip2"></div></h4>
+        {%else%}
+            <h4 class="arrow-left">{{pages.first_as_arrow}}<div class="btn-clip btn-clip3"></div><div class="btn-clip btn-clip4"></div></h4>
+        {%endif%}
     </div>
 </div>
 

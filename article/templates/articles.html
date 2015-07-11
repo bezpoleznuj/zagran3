@@ -4,9 +4,6 @@
 
 {% block article %}
 <div class="main_list">
-    <!-- <div class="main_list-filter">
-        <a href="/">Показать все дома</a><a href="/HU">Венгрия</a> <a href="/SK">Словакия</a>
-    </div> -->
 
     <div id="entries" class="endless_page_template">
          {% include "content.html" %}
@@ -15,7 +12,6 @@
 
     {% block js %}
     {{ block.super }}
-     <script src="http://code.jquery.com/jquery-latest.js"></script>
      <script src="{% static "js/endless-pagination.js"%}"></script>
      <script>$.endlessPaginate();</script>
     {%endblock%}

@@ -1,11 +1,23 @@
+$(window).load(function() {
+  $("body").removeClass("preload");
+});
+
 $(document).ready(function() {
 	doubleHover('a', 'hover');
 
-  $('.main_list-items-item-price a').priceFormat();
+  $('.main_list-items-item-price a').priceFormat({
+    prefix: '',
+    suffix: '&thinsp;$',
+    thousandsSeparator: '&thinsp;',
+    centsLimit: 0
+  });
 
   $('.fotorama').fotorama({
     maxwidth: '100%',
+    minwidth: '620px',
+    height: '460px',
     nav: 'thumbs',
+    loop: 'true',
     allowfullscreen: 'true'
   });
 

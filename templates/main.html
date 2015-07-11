@@ -6,37 +6,46 @@
 	<meta name="robots" content="noindex, nofollow">
 
 	<title>«Загран-Дом», продажа домов и участков в километре за границей Украины</title>
-	<link rel="stylesheet" href="{% static "css/foundation.css"%}">
-	<link rel="stylesheet" href="{% static "css/base.css"%}">
-	<link rel="stylesheet" href="{% static "css/old-radioforms.css"%}">
-	<link rel="stylesheet" href="{% static "css/main.css"%}">
+	<link rel="stylesheet" href="{% static 'css/base.css'%}">
+	<link rel="stylesheet" href="{% static 'css/main.css'%}">
+
+	<link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
 
 	<script src="{% static 'js/jquery-1.11.3.min.js'%}"></script>
 	<script src="{% static 'js/jquery.price_format.2.0.min.js'%}"></script>
 	<script src="{% static 'js/main.js'%}"></script>
 
-	<link rel="stylesheet" href="{% static "css/fotorama.css"%}">
+	<link rel="stylesheet" href="{% static 'css/fotorama.css'%}">
 	<script src="{% static 'js/fotorama.js'%}"></script>
+
+	<link rel="stylesheet" href="{% static 'css/likely.css'%}">
+	<script src="{% static 'js/likely.js'%}"></script>
 </head>
 
-<body>
+<body {%if request.get_full_path = '/'%}class="body-main"{%endif%}>
 	<div class="header">
-        {% if request.get_full_path = "/" %}
-       <h1>Загран-дом</h1>
-        {%else%}
-		<a class="header-logo" href="/"><h1>Загран-дом</h1></a>
-        {%endif%}
+		{%if request.get_full_path != '/'%}<a class="header-logo no-visited" href="/">{%endif%}
+			<h1>Загран-дом</h1>
+		{%if request.get_full_path != '/'%}</a>{%endif%}
+
 		<div class="header-description">
 			<p>{{config.GUARANTEES}}</p>
 		</div>
 
 		<div class="header-contacts">
 			<!-- {{config.ADDRESS}} -->
-			{{config.PHONE}}
+			<span class="header-contacts-phone">{{config.PHONE}}</span>
 			<br>
 			<a href="mailto://{{config.EMAIL}}">{{config.EMAIL}}</a>
 		</div>
 
+		<br>
+		<div class="likely likely-small">
+		  <div class="facebook">Поделиться</div>
+		  <div class="twitter">Твитнуть</div>
+		  <div class="vkontakte">Поделиться</div>
+		  <div class="odnoklassniki">Класснуть</div>
+		</div>
 	</div>
 
 	<div class="content">
@@ -44,6 +53,6 @@
 	</div>
 
 
-	<div class="footer-line"></div>
+	<!-- <div class="footer-line"></div> -->
 </body>
 </html>

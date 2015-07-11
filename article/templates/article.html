@@ -5,30 +5,13 @@
 
 <div class="s_item-fotorama">
 	<div class="fotorama">
+		{% for video in video %}<a href={{video.video}}>Видеообзор дома</a>{%endfor%}
 		<img src="{{ article.article_foto.url}}">
 		{% for foto in image %}
 			<img src="{{foto.image_foto.url}}">
 		{%endfor%}
 	</div>
 </div>
-
-<div class="s_item-description">
-	<h3>О доме</h3>
-	<p>{{ article.article_text|linebreaksbr }}</p>
-
-	<h4>Дополнительные постройки и другие штуки на участке</h4>
-	<p>{{ article.article_outbuildings }}</p>
-
-	<h4>Стоимость коммунальных услуг и их перечень:</h4>
-	<p>{{ article.article_service }}</p>
-
-	<h4>Видеообзор</h4>
-	{% for video in video %}
-		{% video video.video  %}
-        <p> <a href = {{video.video}}>Просмотреть на Youtube </a> </p>
-	{%endfor%}
-</div>
-
 
 <div class="s_item-info s_item-card">
 	<p class="s_item-card-title">
@@ -37,21 +20,21 @@
 		{%if article.article_status == True%}
 			Продаётся за {{article.article_price}}
 		{% else%}
-			Дом продан
+			<span class="item-sold">Дом продан</span>
 		{%endif%}
 	</p>
 
 	<table class="s_item-table">
 		<tr>
-			<td>Площа</td>
+			<td>Площадь</td>
 			<td>{{ article.article_spase }}</td>
 		</tr>
 		<tr>
-			<td>Кількість кімнат</td>
+			<td>Количество комнат</td>
 			<td>{{ article.article_rooms }}</td>
 		</tr>
 		<tr>
-			<td>Кількість поверхів</td>
+			<td>Количество этажей</td>
 			<td>{{ article.article_floor }}</td>
 		</tr>
 		<tr>
@@ -59,34 +42,48 @@
 			<td>{{ article.article_area }}</td>
 		</tr>
 		<tr>
-			<td>тип стін</td>
+			<td>Тип стен</td>
 			<td>{{ article.article_walls }}</td>
 		</tr>
 		<tr>
-			<td>Огражденный участок или нет</td>
+			<td>Огражден ли участок</td>
 			<td>
 				{%if article.article_fence == True%}
-					Огражденный
+					Огражден
 				{% else%}
-					Неогражденный
+					Неогражден
 				{%endif%}
 			</td>
 		</tr>
 	</table>
-    {% if planhouse%}
+    {%if planhouse%}
 	<div style="display: inline-block; margin-right: 20px;">
 		<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}" class="s_item-thumb" style="background-image:url({% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%});"></a>
 		<br>
 		<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}">План дома</a>
 	</div>
     {%endif%}
-    {% if planarea%}
+    {%if planarea%}
 	<div style="display: inline-block;">
 		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}" class="s_item-thumb" style="background-image:url({% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%});"></a>
 		<br>
 		<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}">План участка</a>
 	</div>
     {%endif%}
+</div>
+<div class="s_item-description">
+	<h3>О доме</h3>
+	<p>{{ article.article_text|linebreaksbr }}</p>
+
+	{%if article.article_outbuildings%}
+	<h4>Дополнительные постройки и другие штуки на участке</h4>
+	<p>{{ article.article_outbuildings }}</p>
+	{%endif%}
+
+	{%if article.article_service%}
+	<h4>Стоимость коммунальных услуг и их перечень</h4>
+	<p>{{ article.article_service }}</p>
+	{%endif%}
 </div>
 
 
