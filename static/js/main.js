@@ -8,7 +8,7 @@ $(document).ready(function() {
   formatPrice();
 
   $('.fotorama').fotorama({
-    maxwidth: '100%',
+    width: '100%',
     minwidth: '620px',
     height: '460px',
     nav: 'thumbs',
