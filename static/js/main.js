@@ -5,12 +5,7 @@ $(window).load(function() {
 $(document).ready(function() {
 	doubleHover('a', 'hover');
 
-  $('.main_list-items-item-price a').priceFormat({
-    prefix: '',
-    suffix: '&thinsp;$',
-    thousandsSeparator: '&thinsp;',
-    centsLimit: 0
-  });
+  formatPrice();
 
   $('.fotorama').fotorama({
     maxwidth: '100%',
@@ -25,6 +20,14 @@ $(document).ready(function() {
   $('.main_list-btn_more').click()
 });
 
+function formatPrice() {
+  $('.main_list-items-item-price a, .s_item-card-title span.item-price').priceFormat({
+      prefix: '',
+      suffix: '&thinsp;$',
+      thousandsSeparator: '&thinsp;',
+      centsLimit: 0
+    });
+}
 
 // «doubleHover» by artpolikarpov
 var doubleHover = function(selector, hoverClass) {
