@@ -352,8 +352,12 @@ h1, h2, h3, h4, h5, h6 {
 		margin-right: -20px;
 		padding: 10px 20px;
 		font-size: 1.3em;
+		font-weight: bold;
+		font-family: 'PT Serif Caption', serif;
 	}
-		.s_item-card-title span.item-price {}
+		.s_item-card-title span.item-price {
+			color: #3CB12F;
+		}
 		.s_item-card-title span.item-sold {
 			color: #c83700;
 		}

@@ -18,7 +18,7 @@
 		{%if article.article_country == 'HU' %}Венгрия{%else%}Словакия{%endif%}, {{article.article_address}}
 		<br>
 		{%if article.article_status == True%}
-			Продаётся за <span class="item-price">{{article.article_price}}</span>
+			<span class="item-price">{{article.article_price}}</span>
 		{% else%}
 			<span class="item-sold">Дом продан</span>
 		{%endif%}
