@@ -80,8 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 	.main_list {
 		position: relative;
 		display: block;
-		margin: -15px;
-		text-align: center;
+		/*text-align: center;*/
+		font-size: 0;
+		margin: -15px auto;
+		max-width: 1100px;
 	}
 
 	.main_list-filter {
@@ -97,6 +99,10 @@ h1, h2, h3, h4, h5, h6 {
 		display: inline-block;
 		white-space: nowrap;
 	  margin-bottom: 1em;
+	  margin: 0 -15px;
+	}
+	.main_list-items-dblbl:first-child {
+		margin: 0 15px 0 -15px;
 	}
 
 
@@ -119,6 +125,7 @@ h1, h2, h3, h4, h5, h6 {
 		box-shadow: 0px 25px 40px -15px #afa9a0;
 		overflow: hidden;
 		white-space: normal;
+		font-size: 14px;
 	  -webkit-animation: el_show .2s;
 	  -moz-animation:    el_show .2s;
 	  -o-animation:      el_show .2s;
@@ -236,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	.main_list-btn_more {
 		display: block;
-		margin: 4px auto;
+		margin-top: 35px;
 		max-width: 1100px;
 		text-align: right;
 	  -webkit-animation: el_show .2s;
@@ -253,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
 		#autorepost-button h4 {
 			display: inline-block;
 			position: relative;
-			margin-right: -18px;
+			/*margin-right: -5px;*/
 		}
 			#autorepost-button h4.arrow-right a {
 				padding-right: 40px;

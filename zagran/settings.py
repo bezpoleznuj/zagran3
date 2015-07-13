@@ -135,6 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'files', 'media')
 MEDIA_URL = '/media/'
 
 
+ENDLESS_PAGINATION_PREVIOUS_LABEL = "Предыдущие дома"
 ENDLESS_PAGINATION_NEXT_LABEL = "Cледующие дома"
 ENDLESS_PAGINATION_FIRST_LABEL = "Показать сначала"
 

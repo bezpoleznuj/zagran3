@@ -43,10 +43,12 @@
 
 <div class="main_list-btn_more">
     <div id="autorepost-button">
-        {%if pages.next %}
-            <h4 class="arrow-right">{{pages.next}}<div class="btn-clip btn-clip1"></div><div class="btn-clip btn-clip2"></div></h4>
-        {%else%}
-            <h4 class="arrow-left">{{pages.first_as_arrow}}<div class="btn-clip btn-clip3"></div><div class="btn-clip btn-clip4"></div></h4>
+        {% if pages.paginated %}
+            {%if pages.next %}
+                <h4 class="arrow-right">{{pages.next}}<div class="btn-clip btn-clip1"></div><div class="btn-clip btn-clip2"></div></h4>
+            {%else%}
+                <h4 class="arrow-left">{{pages.first_as_arrow}}<div class="btn-clip btn-clip3"></div><div class="btn-clip btn-clip4"></div></h4>
+            {%endif%}
         {%endif%}
     </div>
 </div>

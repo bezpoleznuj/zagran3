@@ -53,10 +53,10 @@ class Article(models.Model):
             mname = fileName+'_m'+fileExtension
 
             copyfile(filename, sname)
-            resaize(sname,(160,106))
+            resaize(sname,(160,120))
 
             copyfile(filename,mname)
-            resaize(mname,(314,209))
+            resaize(mname,(400,300))
         else:
             fileName, fileExtension = os.path.splitext('./null.JPG')
             randomname = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(5))
@@ -69,10 +69,10 @@ class Article(models.Model):
             self.article_fotomedium=mname =  fileName+'_m'+fileExtension
 
             copyfile(nullnameway,os.path.join(settings.MEDIA_ROOT,sname))
-            resaize(os.path.join(settings.MEDIA_ROOT,sname),(160,106))
+            resaize(os.path.join(settings.MEDIA_ROOT,sname),(160,120))
 
             copyfile(nullnameway,os.path.join(settings.MEDIA_ROOT,mname))
-            resaize(os.path.join(settings.MEDIA_ROOT,mname),(314,209))
+            resaize(os.path.join(settings.MEDIA_ROOT,mname),(400,300))
 
             super(Article, self).save()
 
