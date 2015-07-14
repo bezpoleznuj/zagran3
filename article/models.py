@@ -58,12 +58,13 @@ class Article(models.Model):
             copyfile(filename,mname)
             resaize(mname,(400,300))
         else:
+
             fileName, fileExtension = os.path.splitext('./null.JPG')
             randomname = ''.join(random.choice(string.ascii_uppercase + string.digits) for i in range(5))
             nullname = fileName+randomname+fileExtension
             nullnameway = os.path.join(settings.MEDIA_ROOT, './null.JPG')
             copyfile(os.path.join(settings.MEDIA_ROOT, './null.JPG'),os.path.join(settings.MEDIA_ROOT, nullname))
-
+            self.article_foto = nullname
             fileName, fileExtension = os.path.splitext(nullname)
             self.article_fotosmall=sname =  fileName+'_s'+fileExtension
             self.article_fotomedium=mname =  fileName+'_m'+fileExtension
@@ -100,12 +101,12 @@ class PlanHouse(models.Model):
         verbose_name_plural = "Схема дома"
     planhouse_article = models.ForeignKey(Article)
     planhouse_foto = models.ImageField('План-Схема дома',default='')
-    """planhouse_foto_s = models.ImageField(default='',blank=True)"""
+    planhouse_foto_s = models.ImageField(default='',blank=True, editable=False)
     def save(self):
         super(PlanHouse, self).save()
         resaize(os.path.join(settings.MEDIA_ROOT, self.planhouse_foto.name),(1024,768))
-        """fileName, fileExtension = os.path.splitext(self.planhouse_foto.name)
-        self.planhouse_fotosmall =  fileName+'_s'+fileExtension
+        fileName, fileExtension = os.path.splitext(self.planhouse_foto.name)
+        self.planhouse_foto_s =  fileName+'_s'+fileExtension
 
         filename = os.path.join(settings.MEDIA_ROOT, self.planhouse_foto.name)
 
@@ -113,19 +114,30 @@ class PlanHouse(models.Model):
         sname = fileName+'_s'+fileExtension
 
         copyfile(filename, sname)
-        resaize(sname,(160,106))
+        resaize(sname,(160,120))
         super(PlanHouse, self).save()
-"""
+
 class PlanArea(models.Model):
     class Meta():
         db_table = 'planarea'
         verbose_name_plural = "Схема участка"
     planarea_article = models.ForeignKey(Article)
     planarea_foto = models.ImageField('Схема участка',default='')
+    planarea_foto_s = models.ImageField(default='',blank=True,editable=False)
     def save(self):
         super(PlanArea, self).save()
         resaize(os.path.join(settings.MEDIA_ROOT, self.planarea_foto.name),(1024,768))
+        fileName, fileExtension = os.path.splitext(self.planarea_foto.name)
+        self.planarea_foto_s =  fileName+'_s'+fileExtension
 
+        filename = os.path.join(settings.MEDIA_ROOT, self.planarea_foto.name)
+
+        fileName, fileExtension = os.path.splitext(filename)
+        sname = fileName+'_s'+fileExtension
+
+        copyfile(filename, sname)
+        resaize(sname,(160,120))
+        super(PlanArea, self).save()
 class Video(models.Model):
     class Meta():
         db_table = "Video"

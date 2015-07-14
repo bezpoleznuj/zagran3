@@ -59,14 +59,14 @@
 		</table>
 	    {%if planhouse%}
 		<div style="display: inline-block; margin-right: 20px;">
-			<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}" target="_blank" class="s_item-thumb" style="background-image:url({% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%});"></a>
+			<a href="{% for foto in planhouse %}{{foto.planhouse_foto_s.url}}{%endfor%}" target="_blank" class="s_item-thumb" style="background-image:url({% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%});"></a>
 			<br>
 			<a href="{% for foto in planhouse %}{{foto.planhouse_foto.url}}{%endfor%}">План дома</a>
 		</div>
 	    {%endif%}
 	    {%if planarea%}
 		<div style="display: inline-block;">
-			<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}" target="_blank" class="s_item-thumb" style="background-image:url({% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%});"></a>
+			<a href="{% for foto in planarea %}{{foto.planarea_foto_s.url}}{%endfor%}" target="_blank" class="s_item-thumb" style="background-image:url({% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%});"></a>
 			<br>
 			<a href="{% for foto in planarea %}{{foto.planarea_foto.url}}{%endfor%}">План участка</a>
 		</div>
